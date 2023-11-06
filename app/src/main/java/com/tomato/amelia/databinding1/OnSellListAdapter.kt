@@ -2,9 +2,7 @@ package com.tomato.amelia.databinding1
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.tomato.amelia.R
 import com.tomato.amelia.databinding.ItemOnShellListBinding
@@ -39,14 +37,8 @@ class OnSellListAdapter : RecyclerView.Adapter<OnSellListAdapter.InnerHolder>() 
     }
 
     override fun onBindViewHolder(holder: InnerHolder, position: Int) {
-
-
-
         val item = mContent[position]
-        holder.binding.itemData=item
-
-
-
+        holder.binding.itemData = item
     }
 
     override fun getItemCount(): Int {
