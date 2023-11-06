@@ -14,12 +14,12 @@ gradle.taskGraph.whenReady {
 
 android {
     namespace = "com.tomato.amelia"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.tomato.amelia"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -53,4 +53,19 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+
+    //导入retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    //Gson retrofit结合Gson框架作json数据转换
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    //retrofit2日志打印
+    implementation("com.github.ihsanbal:LoggingInterceptor:3.1.0") {
+        exclude("org.json","json")
+    }
+    implementation("com.google.code.gson:gson:2.10.1")
+
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+
 }

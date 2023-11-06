@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TomatoDemo2023</string>
+
+
+    <string name="final_price">原价：%s</string>
+
+
+
 </resources>

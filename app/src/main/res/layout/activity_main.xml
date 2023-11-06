@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
-
-
+        <variable
+            name="user"
+            type="com.tomato.amelia.databinding1.bean.User" />
     </data>
 
     <LinearLayout
@@ -25,6 +25,7 @@
 
 
             <TextView
+                android:text="@{user.name}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
@@ -43,6 +44,7 @@
 
 
             <TextView
+                android:text="@{String.valueOf(user.age)}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
@@ -59,10 +61,10 @@
                 android:text="性别：" />
 
             <TextView
+                android:text="@{user.gender.toString()}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
-
         </LinearLayout>
 
     </LinearLayout>
