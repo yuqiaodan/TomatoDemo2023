@@ -1,5 +1,6 @@
 package com.tomato.amelia.databinding1
 
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -39,6 +40,9 @@ class OnSellListAdapter : RecyclerView.Adapter<OnSellListAdapter.InnerHolder>() 
     override fun onBindViewHolder(holder: InnerHolder, position: Int) {
         val item = mContent[position]
         holder.binding.itemData = item
+
+        holder.binding.tvOriginPrice.paint.flags=Paint.STRIKE_THRU_TEXT_FLAG
+
     }
 
     override fun getItemCount(): Int {
