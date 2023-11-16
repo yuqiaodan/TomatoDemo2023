@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -11,14 +12,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:orientation="horizontal"
         android:padding="10dp">
 
         <ImageView
             android:id="@+id/iv_on_sell"
             android:layout_width="100dp"
-            android:layout_height="100dp" />
-
+            android:layout_height="100dp"
+            android:layout_marginEnd="10dp"
+            app:goodsImage="@{itemData.pict_url}" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,10 +55,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
-
-                    android:text="@{@string/sell_price(Float.valueOf(itemData.zk_final_price)-itemData.coupon_amount)}"
                     android:textColor="#DC143C"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    app:finalPrice="@{itemData.zk_final_price}"
+                    app:reducePrice="@{itemData.coupon_amount}" />
 
             </LinearLayout>
 
