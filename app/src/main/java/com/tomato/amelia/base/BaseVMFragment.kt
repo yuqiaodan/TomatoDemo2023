@@ -1,4 +1,4 @@
-package com.tomato.amelia.databinding1.base
+package com.tomato.amelia.base
 
 import android.os.Bundle
 import android.view.View
@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
  * author: created by yuqiaodan on 2023/11/6 14:48
  * description:Fragment基类 有ViewModel
  */
-abstract class BaseVmFragment<T : ViewDataBinding, VM : ViewModel> : BaseViewFragment<T>() {
+abstract class BaseVMFragment<T : ViewDataBinding, VM : ViewModel> : BaseFragment<T>() {
 
     protected lateinit var viewModel: VM
 
@@ -19,20 +19,16 @@ abstract class BaseVmFragment<T : ViewDataBinding, VM : ViewModel> : BaseViewFra
         initViewModel()
         super.onViewCreated(view, savedInstanceState)
         //观察数据变化、更新UI
-        obseverData()
-        //设置相关事件
-        initEvent()
-
+        observerData()
     }
 
     private fun initViewModel() {
-        viewModel = ViewModelProvider(this).get(getSubVMClass())
+        viewModel = ViewModelProvider(this).get(getViewModelClass())
     }
 
-    abstract fun getSubVMClass(): Class<VM>
+    abstract fun getViewModelClass(): Class<VM>
 
-    open fun obseverData() {}
+    open fun observerData() {}
 
-    open fun initEvent() {}
 
 }

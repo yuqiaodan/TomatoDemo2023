@@ -1,26 +1,37 @@
 package com.tomato.amelia
 
 import android.content.Intent
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import com.tomato.amelia.databinding1.bean.Gender
-import com.tomato.amelia.databinding1.bean.User
+import android.view.View
+import com.tomato.amelia.base.BaseVMActivity
 import com.tomato.amelia.databinding.ActivityMainBinding
 import com.tomato.amelia.databinding1.TaobaoActivity
+import com.tomato.amelia.databinding2.TemperatureActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseVMActivity<ActivityMainBinding, MainViewModel>(), View.OnClickListener {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        /**方式一:直接创建binding 需要setContentView**/
-        /*val binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)*/
-        /**方式二:通过DataBindingUtil创建binding 不需要setContentView DataBindingUtil可以通过Id来创建binding*/
-        val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
-        binding.user = User("张三", 18, Gender.Male)
-
-        startActivity(Intent(this,TaobaoActivity::class.java))
-
+    override fun getViewModelClass(): Class<MainViewModel> {
+        return MainViewModel::class.java
     }
+
+    override fun getLayoutId(): Int {
+        return R.layout.activity_main
+    }
+
+    override fun initView() {
+        binding.viewModel = viewModel
+        binding.btnDatabinding1.setOnClickListener(this)
+        binding.btnDatabinding2.setOnClickListener(this)
+    }
+
+    override fun onClick(v: View?) {
+        when (v) {
+            binding.btnDatabinding1 -> {
+                startActivity(Intent(this, TaobaoActivity::class.java))
+            }
+            binding.btnDatabinding2->{
+                startActivity(Intent(this, TemperatureActivity::class.java))
+            }
+        }
+    }
+
 }

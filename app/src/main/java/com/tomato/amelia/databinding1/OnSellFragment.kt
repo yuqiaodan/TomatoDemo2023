@@ -8,18 +8,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.blankj.utilcode.util.SizeUtils
 import com.tomato.amelia.R
 import com.tomato.amelia.databinding.FragmentOnSellBinding
-import com.tomato.amelia.databinding1.base.BaseVmFragment
+import com.tomato.amelia.base.BaseVMFragment
 
 /**
  * author: created by yuqiaodan on 2023/11/6 16:25
  * description:
  */
-class OnSellFragment : BaseVmFragment<FragmentOnSellBinding, OnSellViewModel>() {
-    override fun getSubVMClass(): Class<OnSellViewModel> {
+class OnSellFragment : BaseVMFragment<FragmentOnSellBinding, OnSellViewModel>() {
+    override fun getViewModelClass(): Class<OnSellViewModel> {
         return OnSellViewModel::class.java
     }
 
-    override fun getSubLayoutId(): Int {
+    override fun getLayoutId(): Int {
         return R.layout.fragment_on_sell
     }
 
@@ -39,7 +39,7 @@ class OnSellFragment : BaseVmFragment<FragmentOnSellBinding, OnSellViewModel>() 
         })
     }
 
-    override fun obseverData() {
+    override fun observerData() {
         viewModel.loadState.observe(this) { state ->
             Log.d("OnSellTAG", "obseverData:loadState->${state} ")
         }

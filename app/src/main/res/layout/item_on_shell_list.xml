@@ -5,6 +5,10 @@
     <data>
 
         <variable
+            name="eventHandler"
+            type="com.tomato.amelia.databinding1.OnSellListAdapter.EventHandler" />
+
+        <variable
             name="itemData"
             type="com.tomato.amelia.databinding1.api.bean.OnShellItem" />
     </data>
@@ -13,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
+        android:onClick="@{eventHandler::onItemClick}"
         android:orientation="horizontal"
         android:padding="10dp">
 
@@ -21,6 +26,8 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginEnd="10dp"
+            android:onClick="@{(view)->eventHandler.onImageClick(view,itemData.title,itemData.item_id)}"
+            android:onLongClick="@{()->eventHandler.onImageLongClick(itemData.title,itemData.item_id)}"
             app:goodsImage="@{itemData.pict_url}" />
 
         <LinearLayout
@@ -59,7 +66,6 @@
                     android:textSize="14sp"
                     app:finalPrice="@{itemData.zk_final_price}"
                     app:reducePrice="@{itemData.coupon_amount}" />
-
             </LinearLayout>
 
             <TextView

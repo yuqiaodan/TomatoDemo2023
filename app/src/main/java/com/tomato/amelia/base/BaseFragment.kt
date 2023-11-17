@@ -1,4 +1,4 @@
-package com.tomato.amelia.databinding1.base
+package com.tomato.amelia.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment
  * author: created by yuqiaodan on 2023/11/6 14:29
  * description: Fragment基类 无ViewModel
  */
-abstract class BaseViewFragment<T : ViewDataBinding> : Fragment() {
+abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
 
     protected lateinit var binding: T
 
@@ -27,7 +27,7 @@ abstract class BaseViewFragment<T : ViewDataBinding> : Fragment() {
         binding = DataBindingUtil.bind<T>(view)*/
 
         /**方式二:通过DataBindingUtil.inflate直接根据布局Id创建binding  返回结果不可为空 推荐使用*/
-        binding = DataBindingUtil.inflate<T>(inflater, getSubLayoutId(), container, false)
+        binding = DataBindingUtil.inflate<T>(inflater, getLayoutId(), container, false)
         return binding.root
     }
 
@@ -36,7 +36,8 @@ abstract class BaseViewFragment<T : ViewDataBinding> : Fragment() {
         //填充初始数据  设置监听等
         initView()
     }
-    abstract fun getSubLayoutId(): Int
+
+    abstract fun getLayoutId(): Int
 
     abstract fun initView()
 
